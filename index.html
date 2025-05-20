@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amonie Fitness Arena | Gym in Idu, Abuja</title>
+  <link rel="icon" href="Amonie Fitness Arena Logo.png" type="image/x-icon">
+<link rel="shortcut icon" href="Amonie Fitness Arena Logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #eb1d16;
+      --dark: #1A1A1A;
+      --light: #F8F8F8;
+      --accent: #00A8E8;
+      --white: #FFFFFF;
+      --gray: #6C757D;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      background-color: var(--white);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+    
+    .btn-primary:hover {
+      background-color: #E05D00;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+    
+    .section {
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+    }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem 0;
+      z-index: 1000;
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .navbar-logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .navbar-logo span {
+      color: var(--dark);
+    }
+    
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .nav-list {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+    
+    .nav-item {
+      position: relative;
+    }
+    
+    .nav-link {
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--dark);
+      cursor: pointer;
+    }
+    
+    /* HERO SECTION */
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./Amonie\ Fitness\ Arena\ Logo.png') no-repeat center center/cover;
+      color: var(--white);
+      text-align: center;
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    .hero-title span {
+      color: var(--primary);
+    }
+    
+    .hero-text {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+    }
+    
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    /* ABOUT SECTION */
+    .about {
+      background-color: var(--light);
+    }
+    
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    
+    .about-img {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about-img img {
+      width: 100%;
+      height: auto;
+      transition: transform 1s ease;
+    }
+    
+    .about-img:hover img {
+      transform: scale(1.05);
+    }
+    
+    .about-content {
+      flex: 1;
+    }
+    
+    .about-title {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+    
+    .about-text {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .about-features {
+      margin-top: 2rem;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .feature-icon {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-top: 3px;
+    }
+    
+    /* SERVICES SECTION */
+    .services {
+      background-color: var(--white);
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .service-card {
+      background-color: var(--light);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .service-content {
+      padding: 1.5rem;
+    }
+    
+    .service-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    
+    .service-text {
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    
+    /* SCHEDULE SECTION */
+    .schedule {
+      background-color: var(--light);
+    }
+    
+    .schedule-container {
+      display: flex;
+      gap: 3rem;
+    }
+    
+    .schedule-img {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .schedule-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .schedule-content {
+      flex: 1;
+    }
+    
+    .schedule-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .time-slots {
+      margin-top: 2rem;
+    }
+    
+    .time-slot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .time-slot:last-child {
+      border-bottom: none;
+    }
+    
+    .day {
+      font-weight: 600;
+    }
+    
+    .hours {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    /* TESTIMONIALS */
+    .testimonials {
+      background-color: var(--white);
+    }
+    
+    .testimonial-slider {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .testimonial {
+      padding: 2rem;
+    }
+    
+    .testimonial-text {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .testimonial-text::before,
+    .testimonial-text::after {
+      content: '"';
+      font-size: 3rem;
+      color: var(--primary);
+      opacity: 0.3;
+      position: absolute;
+    }
+    
+    .testimonial-text::before {
+      top: -20px;
+      left: -20px;
+    }
+    
+    .testimonial-text::after {
+      bottom: -40px;
+      right: -20px;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      margin-top: 2rem;
+    }
+    
+    .testimonial-role {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* CTA SECTION */
+    .cta {
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./Amonie\ Fitness\ Arena\ Logo.png') no-repeat center center/cover;
+      color: var(--white);
+      text-align: center;
+      padding: 6rem 0;
+    }
+    
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-text {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* CONTACT SECTION */
+    .contact {
+      background-color: var(--light);
+    }
+    
+    .contact-container {
+      display: flex;
+      gap: 3rem;
+    }
+    
+    .contact-info {
+      flex: 1;
+    }
+    
+    .contact-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-text {
+      margin-bottom: 2rem;
+    }
+    
+    .contact-details {
+      margin-bottom: 2rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-top: 3px;
+    }
+    
+    .contact-form {
+      flex: 1;
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    /* FOOTER */
+    .footer {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--primary);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-link {
+      margin-bottom: 0.8rem;
+      transition: var(--transition);
+    }
+    
+    .footer-link a {
+      opacity: 0.8;
+      transition: var(--transition);
+    }
+    
+    .footer-link a:hover {
+      opacity: 1;
+      color: var(--primary);
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    
+    .social-link:hover {
+      background-color: var(--primary);
+      color: var(--dark);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1024px) {
+      .section {
+        padding: 4rem 0;
+      }
+      
+      .about-container,
+      .schedule-container,
+      .contact-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .about-img,
+      .about-content,
+      .schedule-img,
+      .schedule-content,
+      .contact-info,
+      .contact-form {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .navbar-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        z-index: 999;
+      }
+      
+      .navbar-menu.active {
+        left: 0;
+      }
+      
+      .nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-text {
+        font-size: 1rem;
+      }
+      
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-btns {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="navbar-logo">
+  AMONIE FITNESS ARENA  <span> </span>
+</a>
+      
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="navbar-menu" id="navbar-menu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="services.html" class="nav-link">Programs </a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <a href="join.html" class="btn btn-outline">Join Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+ <section class="hero" id="home">
+  <video class="hero-bg-video" autoplay muted loop playsinline>
+    <source src="v3.mp4" type="video/mp4">
+    <!-- Optionally add more sources for webm/ogg -->
+    Your browser does not support the video tag.
+  </video>
+  <div class="container hero-content">
+    <h1 class="hero-title">Break Through Your Limits <span>Achieve Greatness</span></h1>
+    <p class="hero-text">Join Abuja's premier fitness destination at Amonie Fitness Arena. Our state-of-the-art facility and expert trainers will help you transform your body and mind.</p>
+    <div class="hero-btns">
+      <a href="join.html" class="btn btn-primary">Join Now</a>
+      <a href="services.html" class="btn btn-outline">Our Services</a>
+    </div>
+  </div>
+</section>
+
+
+<style> 
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  object-fit: cover;
+  opacity: 0.7; /* Optional: for overlay effect */
+  pointer-events: none; /* Ensures video doesn't block buttons/links */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  /* Optionally add background or overlay for readability */
+}
+
+
+</style>
+  <!-- ABOUT SECTION -->
+  <section class="section about" id="about">
+    <div class="container about-container">
+      <div class="about-img">
+        <img src="p (3).jpeg" alt="Amonie Fitness Arena">
+      </div>
+      
+      <div class="about-content">
+        <h2 class="section-title">About Amonie Fitness</h2>
+        <p class="about-text">Amonie Fitness Arena is Idu's premier fitness center, dedicated to helping our members achieve their health and fitness goals in a supportive, motivating environment.</p>
+        <p class="about-text">Located at the Epic Center in Idu, Abuja, we offer top-tier equipment, expert trainers, and diverse workout programs to cater to all fitness levels.</p>
+        
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-dumbbell"></i>
+            </div>
+            <div>
+              <h4>Modern Equipment</h4>
+              <p>State-of-the-art machines and free weights for all your training needs</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div>
+              <h4>Expert Trainers</h4>
+              <p>Certified professionals to guide you every step of the way</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div>
+              <h4>Diverse Programs</h4>
+              <p>From strength training to cardio and group classes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+
+
+<style>
+/* Base Styles */
+:root {
+  --primary: #e63946;
+  --primary-dark: #c1121f;
+  --secondary: #780000;
+  --dark: #1e1e1e;
+  --light: #f8f9fa;
+  --gray: #6c757d;
+}
+
+.section {
+  padding: 5rem 0;
+  position: relative;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section Header */
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  margin: 1.5rem auto;
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Service Card */
+.service-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.img-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.service-card:hover .service-img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(230, 57, 70, 0.7));
+}
+
+.service-content {
+  padding: 1.5rem;
+  position: relative;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  margin: -40px auto 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.service-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.service-text {
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Pricing */
+.pricing {
+  margin-bottom: 1.5rem;
+}
+
+.pricing h4 {
+  font-size: 1.2rem;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.pricing ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pricing li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #eee;
+  color: var(--gray);
+  display: flex;
+  justify-content: space-between;
+}
+
+.pricing li span {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.pricing li:last-child {
+  border-bottom: none;
+}
+
+/* Buttons */
+.button-container {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: white;
+  box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, var(--primary-dark), var(--secondary));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.6);
+}
+
+.btn i {
+  margin-right: 8px;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(230, 57, 70, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(230, 57, 70, 0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .service-content {
+    padding: 1rem;
+  }
+  
+  .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.8rem;
+  }
+}
+</style>
+
+<!-- Include Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Include Animate.css for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+<style>
+/* Base Styles */
+:root {
+  --primary: #ff6b6b;
+  --secondary: #794afa;
+  --dark: #1e1e1e;
+  --light: #f8f9fa;
+  --gray: #6c757d;
+}
+
+.section {
+  padding: 5rem 0;
+  position: relative;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section Header */
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  margin: 1.5rem auto;
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Service Card */
+.service-card {
+  perspective: 1000px;
+  height: 450px;
+}
+
+.service-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.service-card:hover .service-card-inner {
+  transform: rotateY(180deg);
+}
+
+.service-card-front, .service-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: white;
+}
+
+.service-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+}
+
+/* Card Front */
+.img-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.service-card:hover .service-img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+}
+
+.service-content {
+  padding: 1.5rem;
+  position: relative;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  margin: -40px auto 1.5rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.service-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.service-text {
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Card Back */
+.service-card-back .service-content {
+  padding: 2rem;
+}
+
+.pricing {
+  margin-bottom: 1.5rem;
+}
+
+.pricing h4 {
+  font-size: 1.2rem;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.pricing ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pricing li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #eee;
+  color: var(--gray);
+  display: flex;
+  justify-content: space-between;
+}
+
+.pricing li:last-child {
+  border-bottom: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+}
+
+.flip-btn {
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 1rem;
+  transition: all 0.3s;
+}
+
+.flip-btn:hover {
+  color: var(--secondary);
+}
+
+/* Animations */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-card {
+    height: auto;
+  }
+  
+  .service-card-inner {
+    height: auto;
+    transform-style: flat;
+  }
+  
+  .service-card-front, .service-card-back {
+    position: relative;
+    transform: none;
+    height: auto;
+  }
+  
+  .service-card:hover .service-card-inner {
+    transform: none;
+  }
+  
+  .flip-btn {
+    display: none;
+  }
+}
+</style>
+
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title text-center animate__animated animate__fadeInDown">Our Services</h2>
+      <div class="divider animate__animated animate__zoomIn"></div>
+      <p class="section-subtitle text-center mx-auto animate__animated animate__fadeIn animate__delay-1s">Our fitness center offers several pricing options to fit your needs. Choose the package that best suits your lifestyle and commitment level!</p>
+    </div>
+    
+    <div class="services-grid">
+      <!-- Service Card 1 -->
+      <div class="plan animate__animated animate__fadeInLeft">
+        <div class="inner">
+          <div class="pricing">
+            From <span>₦2,000</span>
+          </div>
+          <h3 class="title">Individual Packages</h3>
+          <p class="info">Enjoy customized one-on-one training sessions with our certified trainers</p>
+          <ul class="features">
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Daily Session: <strong>₦2,000</strong></span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Weekly Package: <strong>₦10,000</strong></span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Monthly Package: <strong>₦30,000</strong></span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>3 Months: <strong>₦70,000</strong></span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>6 Months: <strong>₦150,000</strong></span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>1 Year: <strong>₦285,000</strong></span>
+            </li>
+          </ul>
+          <div class="action">
+            <a href="join.html" class="button">Book Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Service Card 2 -->
+      <div class="plan animate__animated animate__fadeInUp">
+        <div class="inner">
+          <div class="pricing">
+            From <span>₦50,000</span>
+          </div>
+          <h3 class="title">Group Packages</h3>
+          <p class="info">Work out with friends or family and enjoy special group rates</p>
+          <ul class="features">
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Couple Package: <strong>₦50,000</strong></span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Group of 3: <strong>₦75,000</strong></span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Group of 5: <strong>₦120,000</strong></span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Personalized schedules</span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Shared training sessions</span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Group discounts</span>
+            </li>
+          </ul>
+          <div class="action">
+            <a href="join.html" class="button">Join Group</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Service Card 3 -->
+      <div class="plan animate__animated animate__fadeInRight">
+        <div class="inner">
+          <div class="pricing">
+            Call for <span>Details</span>
+          </div>
+          <h3 class="title">Superb Trainer Sessions</h3>
+          <p class="info">Premium training with our most experienced coaches</p>
+          <ul class="features">
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Morning sessions (6 AM – 11 AM)</span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Evening sessions (6 PM – 9 PM)</span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Personalized attention</span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Expert guidance</span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Custom workout plans</span>
+            </li>
+            <li>
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Nutrition counseling</span>
+            </li>
+          </ul>
+          <div class="action">
+            <a href="tel:08037887703" class="button">
+              <i class="fas fa-phone"></i> Call Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Base Styles */
+:root {
+  --primary: #e63946;
+  --primary-dark: #c1121f;
+  --secondary: #780000;
+  --accent: #ff6b6b;
+  --dark: #1e1e1e;
+  --light: #f8f9fa;
+  --gray: #6c757d;
+  --light-bg: #fce8e8;
+}
+
+.section {
+  padding: 5rem 0;
+  position: relative;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section Header */
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.divider {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  margin: 1.5rem auto;
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Plan Cards - Adapted from Uiverse with red theme */
+.plan {
+  border-radius: 16px;
+  box-shadow: 0 30px 30px -25px rgba(230, 57, 70, 0.2);
+  padding: 10px;
+  background-color: #fff;
+  color: var(--gray);
+  max-width: 380px;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.plan:hover {
+  transform: translateY(-5px);
+}
+
+.plan strong {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.plan .inner {
+  align-items: center;
+  padding: 30px;
+  padding-top: 50px;
+  background-color: var(--light-bg);
+  border-radius: 12px;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px; /* Ensures the card is tall enough for all content */
+}
+
+.plan .pricing {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--accent);
+  border-radius: 99em 0 0 99em;
+  display: flex;
+  align-items: center;
+  padding: 0.625em 1.25em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+
+.plan .pricing span {
+  margin-left: 0.25em;
+}
+
+.plan .title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.plan .info {
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.plan .features {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.plan .features li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.plan .features li + * {
+  margin-top: 0.25rem;
+}
+
+.plan .features .icon {
+  background-color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.plan .features .icon i {
+  font-size: 12px;
+}
+
+.plan .action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plan .button {
+  background-color: var(--primary);
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  width: 100%;
+  padding: 0.75em 1em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.plan .button:hover, .plan .button:focus {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  .plan .inner {
+    min-height: 700px; /* Make cards even taller on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .plan .inner {
+    padding: 25px;
+    padding-top: 45px;
+    min-height: 750px; /* Further increase for very small screens */
+  }
+  
+  .plan .features li {
+    font-size: 0.95rem;
+  }
+  
+  .plan .button {
+    font-size: 1rem;
+    padding: 0.7em 1em;
+  }
+}
+</style>
+
+<!-- Include Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Include Animate.css for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+
+<!-- Include Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Include Animate.css for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- TESTIMONIALS SECTION -->
+  <section class="section testimonials">
+    <div class="container">
+      <h2 class="section-title text-center">What Our Members Say</h2>
+      <p class="section-subtitle text-center mx-auto">Hear from our community of fitness enthusiasts</p>
+      
+      <div class="testimonial-slider">
+        <div class="testimonial">
+          <p class="testimonial-text">Amonie Fitness has completely transformed my approach to health. The trainers are knowledgeable and supportive, and the community keeps me motivated.</p>
+          <div class="testimonial-author">James Okeke</div>
+          <div class="testimonial-role">Member since 2022</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta">
+    <div class="container">
+      <h2 class="cta-title">Ready to Transform Your Life?</h2>
+      <p class="cta-text">Join Amonie Fitness Arena today and start your journey to a healthier, stronger you. Our team is ready to help you achieve your fitness goals.</p>
+      <a href="#contact" class="btn btn-primary">Get Started</a>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section contact" id="contact">
+    <div class="container contact-container">
+      <div class="contact-info">
+        <h2 class="contact-title">Contact Us</h2>
+        <p class="contact-text">Have questions or ready to join? Reach out to us today and our team will be happy to assist you.</p>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h4>Location</h4>
+              <p>No 1 Zilly Aggrey Drive, Epic Center, Idu, Abuja, Nigeria 900102</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div>
+              <h4>Phone</h4>
+              <p>+234 803 123 4567</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p>info@amoniefitness.com</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="tel" id="phone" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea id="message" class="form-control"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Amonie Fitness</h3>
+          <p>Idu's premier fitness destination, helping you break through limits and achieve greatness since 2020.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="index.html">Home</a></li>
+            <li class="footer-link"><a href="about.html">About Us</a></li>
+            <li class="footer-link"><a href="services.html">Services</a></li>
+          
+            <li class="footer-link"><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Opening Hours</h3>
+          <ul class="footer-links">
+            <li class="footer-link">Mon-Fri: 6PM - 9PM</li>
+            <li class="footer-link">Sat: 7AM - 11AM</li>
+            <li class="footer-link">Sun: Closed</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy;  Amonie Fitness Arena. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navbarMenu = document.getElementById('navbar-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navbarMenu.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navbarMenu.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Testimonial slider
+    const testimonials = [
+      {
+        text: "Amonie Fitness has completely transformed my approach to health. The trainers are knowledgeable and supportive, and the community keeps me motivated.",
+        author: "James Okeke",
+        role: "Member since 2022"
+      },
+      {
+        text: "I've tried many gyms in Abuja, but Amonie stands out for its clean facilities, professional staff, and welcoming atmosphere.",
+        author: "Amina Yusuf",
+        role: "Member since 2021"
+      },
+      {
+        text: "The personal training program helped me lose 15kg in 3 months. I couldn't have done it without their guidance and support.",
+        author: "David Johnson",
+        role: "Member since 2023"
+      }
+    ];
+    
+    let currentTestimonial = 0;
+    const testimonialElement = document.querySelector('.testimonial');
+    
+    function showTestimonial(index) {
+      const testimonial = testimonials[index];
+      testimonialElement.innerHTML = `
+        <p class="testimonial-text">${testimonial.text}</p>
+        <div class="testimonial-author">${testimonial.author}</div>
+        <div class="testimonial-role">${testimonial.role}</div>
+      `;
+    }
+    
+    // Rotate testimonials every 5 seconds
+    setInterval(() => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }, 5000);
+    
+    // Initialize first testimonial
+    showTestimonial(0);
+  </script>
+</body>
+</html>
