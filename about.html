@@ -11,15 +11,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Reusing all the same styles from the home page */
     :root {
-      --primary: #eb1d16;
+      --primary: #FF3E41;
+      --primary-light: #FF6B6E;
+      --primary-dark: #E63946;
+      --secondary: #2B2D42;
+      --accent: #FFD166;
       --dark: #1A1A1A;
-      --light: #F8F8F8;
-      --accent: #00A8E8;
-      --white: #FFFFFF;
+      --light: #F8F9FA;
       --gray: #6C757D;
-      --transition: all 0.3s ease;
+      --light-gray: #E9ECEF;
+      --white: #FFFFFF;
+      --black: #000000;
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+      --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
     }
     
     * {
@@ -30,30 +38,59 @@
     
     html {
       scroll-behavior: smooth;
+      font-size: 16px;
     }
     
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Poppins', sans-serif;
       color: var(--dark);
       background-color: var(--white);
-      line-height: 1.6;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
     
-    h1, h2, h3, h4, h5 {
-      font-family: 'Poppins', sans-serif;
+    h1, h2, h3, h4, h5, h6 {
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+    }
+    
+    h2 {
+      font-size: 2.75rem;
+    }
+    
+    h3 {
+      font-size: 2rem;
+    }
+    
+    h4 {
+      font-size: 1.5rem;
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+      color: var(--gray);
     }
     
     a {
       text-decoration: none;
       color: inherit;
+      transition: var(--transition);
     }
     
     img {
       max-width: 100%;
       height: auto;
       display: block;
+    }
+    
+    ul {
+      list-style: none;
     }
     
     .container {
@@ -63,10 +100,72 @@
       padding: 0 1.5rem;
     }
     
-    .btn {
+    .section {
+      padding: 6rem 0;
+      position: relative;
+    }
+    
+    .section-title {
+      position: relative;
       display: inline-block;
-      padding: 0.8rem 2rem;
-      border-radius: 4px;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+    
+    .section-title.center::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .text-accent {
+      color: var(--accent);
+    }
+    
+    .bg-dark {
+      background-color: var(--secondary);
+      color: var(--white);
+    }
+    
+    .bg-light {
+      background-color: var(--light);
+    }
+    
+    .bg-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -74,17 +173,36 @@
       transition: var(--transition);
       cursor: pointer;
       border: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background-color: rgba(255,255,255,0.1);
+      transition: var(--transition);
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      width: 100%;
     }
     
     .btn-primary {
-      background-color: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: var(--white);
+      box-shadow: var(--shadow-md);
     }
     
     .btn-primary:hover {
-      background-color: #E05D00;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
     }
     
     .btn-outline {
@@ -96,44 +214,48 @@
     .btn-outline:hover {
       background-color: var(--primary);
       color: var(--white);
+      border-color: var(--primary);
     }
     
-    .section {
-      padding: 5rem 0;
-    }
-    
-    .section-title {
-      font-size: 2.5rem;
+    .btn-accent {
+      background-color: var(--accent);
       color: var(--dark);
-      margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
+      font-weight: 700;
     }
     
-    .section-title::after {
-      content: '';
+    .btn-accent:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .btn-lg {
+      padding: 1.1rem 2.5rem;
+      font-size: 1rem;
+    }
+    
+    .btn-icon {
+      margin-right: 0.5rem;
+    }
+    
+    .shape-divider {
       position: absolute;
-      bottom: -10px;
+      bottom: 0;
       left: 0;
-      width: 60px;
-      height: 4px;
-      background-color: var(--primary);
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
     }
     
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--gray);
-      max-width: 700px;
-      margin-bottom: 2rem;
+    .shape-divider svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 100px;
     }
     
-    .text-center {
-      text-align: center;
-    }
-    
-    .mx-auto {
-      margin-left: auto;
-      margin-right: auto;
+    .shape-divider .shape-fill {
+      fill: var(--white);
     }
     
     /* NAVBAR */
@@ -144,9 +266,15 @@
       width: 100%;
       padding: 1.2rem 0;
       z-index: 1000;
-      background-color: var(--white);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
       transition: var(--transition);
+    }
+    
+    .navbar.scrolled {
+      padding: 0.8rem 0;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
     
     .navbar-container {
@@ -156,14 +284,20 @@
     }
     
     .navbar-logo {
-      font-family: 'Poppins', sans-serif;
       font-size: 1.8rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-logo img {
+      height: 40px;
+      margin-right: 0.5rem;
     }
     
     .navbar-logo span {
-      color: var(--dark);
+      color: var(--secondary);
     }
     
     .navbar-menu {
@@ -175,7 +309,7 @@
     .nav-list {
       display: flex;
       list-style: none;
-      gap: 1.5rem;
+      gap: 1.8rem;
     }
     
     .nav-item {
@@ -187,6 +321,23 @@
       font-size: 0.95rem;
       transition: var(--transition);
       padding: 0.5rem 0;
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
     }
     
     .nav-link:hover {
@@ -200,37 +351,65 @@
       font-size: 1.5rem;
       color: var(--dark);
       cursor: pointer;
+      z-index: 1001;
     }
     
     /* HERO SECTION */
-    .page-hero {
-      height: 60vh;
-      min-height: 500px;
+    .hero {
+      height: 100vh;
+      min-height: 800px;
       display: flex;
       align-items: center;
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./Amonie\ Fitness\ Arena\ Logo.png') no-repeat center center/cover;
-      color: var(--white);
-      text-align: center;
+      position: relative;
+      overflow: hidden;
       padding-top: 80px;
     }
     
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(43,45,66,0.9) 0%, rgba(43,45,66,0.7) 100%);
+      z-index: 1;
+    }
+    
+    .hero-bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
     .hero-content {
+      position: relative;
+      z-index: 2;
       max-width: 800px;
       margin: 0 auto;
+      text-align: center;
+      color: var(--white);
     }
     
     .hero-title {
-      font-size: 3.5rem;
+      font-size: 4rem;
       margin-bottom: 1.5rem;
       line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     
     .hero-title span {
       color: var(--primary);
+      display: inline-block;
     }
     
     .hero-text {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       margin-bottom: 2.5rem;
       opacity: 0.9;
     }
@@ -238,30 +417,61 @@
     .hero-btns {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
     }
     
     /* ABOUT SECTION */
     .about {
-      background-color: var(--light);
+      position: relative;
+      overflow: hidden;
     }
     
     .about-container {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: center;
-      gap: 3rem;
     }
     
     .about-img {
-      flex: 1;
-      border-radius: 10px;
+      position: relative;
+      border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-xl);
+      height: 550px;
     }
     
     .about-img img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       transition: transform 1s ease;
     }
     
@@ -269,14 +479,23 @@
       transform: scale(1.05);
     }
     
-    .about-content {
-      flex: 1;
+    .about-img::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(255,62,65,0.2) 0%, rgba(43,45,66,0.6) 100%);
+      z-index: 1;
     }
     
-    .about-title {
-      font-size: 2.2rem;
+    .about-content {
+      position: relative;
+    }
+    
+    .section-title {
       margin-bottom: 1.5rem;
-      color: var(--dark);
     }
     
     .about-text {
@@ -291,196 +510,674 @@
     .feature-item {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1rem;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
     }
     
     .feature-icon {
-      color: var(--primary);
-      font-size: 1.5rem;
-      margin-top: 3px;
-    }
-    
-    /* MISSION SECTION */
-    .mission {
-      background-color: var(--white);
-    }
-    
-    .mission-container {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(255,62,65,0.1);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 3rem;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.5rem;
+      flex-shrink: 0;
     }
     
-    .mission-content {
-      flex: 1;
+    .feature-content h4 {
+      margin-bottom: 0.5rem;
     }
     
-    .mission-img {
-      flex: 1;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* SERVICES SECTION */
+    .services {
+      position: relative;
     }
     
-    .mission-img img {
-      width: 100%;
-      height: auto;
+    .services-header {
+      text-align: center;
+      margin-bottom: 4rem;
     }
     
-    /* TEAM SECTION */
-    .team {
-      background-color: var(--light);
-    }
-    
-    .team-grid {
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 2rem;
     }
     
-    .team-member {
+    .service-card {
       background-color: var(--white);
-      border-radius: 10px;
+      border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      box-shadow: var(--shadow-md);
       transition: var(--transition);
-      text-align: center;
+      position: relative;
+      z-index: 1;
     }
     
-    .team-member:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .team-img {
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 300px;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(255,62,65,0.1) 0%, rgba(43,45,66,0.8) 100%);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 2;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    
+    .service-img {
+      height: 250px;
+      width: 100%;
       object-fit: cover;
     }
     
-    .team-info {
-      padding: 1.5rem;
+    .service-content {
+      padding: 2rem;
+      position: relative;
+      z-index: 3;
     }
     
-    .team-name {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: var(--dark);
-    }
-    
-    .team-role {
-      color: var(--primary);
-      font-weight: 600;
+    .service-title {
+      font-size: 1.5rem;
       margin-bottom: 1rem;
+      color: var(--secondary);
     }
     
-    .team-bio {
+    .service-text {
       color: var(--gray);
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
     }
     
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    
-    .social-link {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background-color: rgba(235, 29, 22, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
+    .service-price {
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--primary);
+      margin-bottom: 1.5rem;
     }
     
-    .social-link:hover {
-      background-color: var(--primary);
+    /* PROGRAMS SECTION */
+    .programs {
+      background-color: var(--secondary);
+      color: var(--white);
+      position: relative;
+    }
+    
+    .programs .section-title {
       color: var(--white);
     }
     
-    /* FACILITIES SECTION */
-    .facilities {
-      background-color: var(--white);
+    .programs .section-title::after {
+      background: linear-gradient(to right, var(--accent), var(--primary));
     }
     
-    .facilities-grid {
+    .programs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
     
-    .facility-card {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    .program-card {
+      background-color: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 2.5rem 2rem;
+      transition: var(--transition);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     
-    .facility-img {
-      height: 200px;
+    .program-card:hover {
+      transform: translateY(-10px);
+      background-color: rgba(255,255,255,0.1);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .program-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    
+    .program-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    
+    .program-text {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+    }
+    
+    /* TRAINERS SECTION */
+    .trainers {
+      background-color: var(--light);
+    }
+    
+    .trainers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    .trainer-card {
+      background-color: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+    
+    .trainer-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .trainer-img {
+      height: 350px;
       width: 100%;
       object-fit: cover;
     }
     
-    .facility-content {
+    .trainer-content {
       padding: 1.5rem;
-      background-color: var(--light);
+      text-align: center;
     }
     
-    .facility-title {
-      font-size: 1.3rem;
+    .trainer-name {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .trainer-role {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .trainer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .trainer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      transition: var(--transition);
+    }
+    
+    .trainer-social a:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+    
+    /* TESTIMONIALS SECTION */
+    .testimonials {
+      position: relative;
+    }
+    
+    .testimonials .section-title {
+      text-align: center;
+    }
+    
+    .testimonials .section-title::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+      .main-section {
+      flex: 1 0 auto;
+      background: var(--white);
+      padding: 4rem 0 6rem 0;
+    }
+    
+    .join-form-wrapper {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .join-form-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--gradient);
+    }
+    
+    .join-form-title {
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
       color: var(--dark);
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 1rem;
     }
     
-    .facility-text {
+    .join-form-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+    
+    .form-description {
+      text-align: center;
       color: var(--gray);
+      margin-bottom: 3rem;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .field {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .field label {
+      font-size: 0.97rem;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .field label i {
+      margin-right: 0.5rem;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    
+    .field input, 
+    .field select, 
+    .field textarea {
+      padding: 0.9rem 1.2rem;
+      font-size: 0.97rem;
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius-sm);
+      background: var(--light);
+      transition: var(--transition);
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .field input:focus, 
+    .field select:focus, 
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(255, 62, 65, 0.15);
+    }
+    
+    .field textarea { 
+      min-height: 120px; 
+      resize: vertical; 
+    }
+    
+    .field.full-width { 
+      grid-column: 1 / 3; 
+    }
+    
+    .join-submit-btn {
+      width: 100%;
+      padding: 1.2rem;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      border: none;
+      margin-top: 1.5rem;
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(255, 62, 65, 0.3);
+    }
+    
+    .join-submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .join-submit-btn:hover::before {
+      left: 100%;
+    }
+    
+    .join-submit-btn:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    
+    .form-message {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      display: none;
+      font-size: 0.97rem;
+      font-weight: 500;
+    }
+    
+    .form-message.success {
+      background-color: rgba(40, 167, 69, 0.12);
+      color: #28a745;
+      display: block;
+    }
+    
+    .form-message.error {
+      background-color: rgba(220, 53, 69, 0.12);
+      color: #dc3545;
+      display: block;
+    }
+    .testimonial-slider {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .testimonial {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 3rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      margin: 0 1rem;
+    }
+    
+    .testimonial-text {
+      font-size: 1.25rem;
+      font-style: italic;
+      margin-bottom: 2rem;
+      position: relative;
+      color: var(--gray);
+    }
+    
+    .testimonial-text::before,
+    .testimonial-text::after {
+      content: '"';
+      font-size: 3rem;
+      color: var(--primary);
+      opacity: 0.3;
+      position: absolute;
+      font-family: serif;
+    }
+    
+    .testimonial-text::before {
+      top: -20px;
+      left: -15px;
+    }
+    
+    .testimonial-text::after {
+      bottom: -40px;
+      right: -15px;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    
+    .testimonial-author-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+      border: 3px solid var(--primary);
+    }
+    
+    .testimonial-author-info h4 {
+      margin-bottom: 0.25rem;
+      text-align: left;
+    }
+    
+    .testimonial-author-info p {
+      color: var(--gray);
+      margin-bottom: 0;
+      text-align: left;
     }
     
     /* CTA SECTION */
     .cta {
-      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./p\ \(3\).jpeg ') no-repeat center center/cover;
+      background: linear-gradient(135deg, rgba(255,62,65,0.9) 0%, rgba(230,57,70,0.9) 100%), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
       color: var(--white);
       text-align: center;
-      padding: 6rem 0;
+      padding: 8rem 0;
+      position: relative;
+    }
+    
+    .cta .container {
+      position: relative;
+      z-index: 2;
     }
     
     .cta-title {
-      font-size: 2.5rem;
+      font-size: 2.75rem;
       margin-bottom: 1.5rem;
     }
     
     .cta-text {
       max-width: 700px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
+      margin: 0 auto 3rem;
+      font-size: 1.25rem;
       opacity: 0.9;
+    }
+    
+    /* CONTACT SECTION */
+    .contact {
+      position: relative;
+    }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    
+    .contact-info {
+      position: relative;
+    }
+    
+    .contact-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-text {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .contact-details {
+      margin-bottom: 3rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(255,62,65,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .contact-item-content h4 {
+      margin-bottom: 0.25rem;
+    }
+    
+    .contact-item-content a {
+      color: var(--gray);
+      transition: var(--transition);
+    }
+    
+    .contact-item-content a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      transition: var(--transition);
+    }
+    
+    .social-link:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+    
+    .contact-form {
+      background-color: var(--white);
+      padding: 2.5rem;
+      border-radius: 15px;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+      background-color: var(--light);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255,62,65,0.1);
+      background-color: var(--white);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
     }
     
     /* FOOTER */
     .footer {
-      background-color: var(--dark);
+      background-color: var(--secondary);
       color: var(--white);
-      padding: 4rem 0 2rem;
+      padding: 6rem 0 2rem;
+      position: relative;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3E%3C/path%3E%3C/svg%3E") no-repeat center top/100% 100%;
     }
     
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 3rem;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
+      position: relative;
+      z-index: 2;
     }
     
     .footer-col h3 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-bottom: 1.5rem;
       position: relative;
-      padding-bottom: 10px;
+      padding-bottom: 15px;
     }
     
     .footer-col h3::after {
@@ -488,104 +1185,201 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 40px;
-      height: 2px;
-      background-color: var(--primary);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+    }
+    
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+    
+    .footer-about {
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
     }
     
     .footer-links {
-      list-style: none;
+      margin-bottom: 1.5rem;
     }
     
     .footer-link {
-      margin-bottom: 0.8rem;
-      transition: var(--transition);
+      margin-bottom: 0.75rem;
     }
     
     .footer-link a {
       opacity: 0.8;
       transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     
     .footer-link a:hover {
       opacity: 1;
       color: var(--primary);
-      padding-left: 5px;
+      transform: translateX(5px);
     }
     
-    .social-links {
+    .footer-link i {
+      font-size: 0.8rem;
+      color: var(--primary);
+    }
+    
+    .footer-contact-item {
       display: flex;
+      align-items: flex-start;
       gap: 1rem;
-      margin-top: 1.5rem;
+      margin-bottom: 1rem;
     }
     
-    .social-link {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
+    .footer-contact-icon {
+      color: var(--primary);
+      margin-top: 3px;
     }
     
-    .social-link:hover {
-      background-color: var(--primary);
-      color: var(--dark);
+    .footer-contact-text {
+      opacity: 0.8;
     }
     
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255,255,255,0.1);
       font-size: 0.9rem;
       opacity: 0.7;
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* BACK TO TOP */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+    
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fadeInUp {
+      animation: fadeInUp 1s ease forwards;
+    }
+    
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.6s;
     }
     
     /* RESPONSIVE DESIGN */
-    @media (max-width: 1024px) {
-      .section {
-        padding: 4rem 0;
+    @media (max-width: 1200px) {
+      html {
+        font-size: 15px;
       }
       
+      .hero-title {
+        font-size: 3.5rem;
+      }
+    }
+    
+    @media (max-width: 992px) {
       .about-container,
-      .mission-container {
-        flex-direction: column;
-        gap: 2rem;
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-img {
+        height: 500px;
+      }
+      
+      .about-content,
+      .contact-info {
+        order: 2;
       }
       
       .about-img,
-      .about-content,
-      .mission-img,
-      .mission-content {
-        width: 100%;
+      .contact-form {
+        order: 1;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .section {
+        padding: 5rem 0;
       }
     }
     
     @media (max-width: 768px) {
       .navbar-menu {
         position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
         background-color: var(--white);
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 6rem 2rem;
         transition: var(--transition);
-        z-index: 999;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.1);
       }
       
       .navbar-menu.active {
-        left: 0;
+        right: 0;
       }
       
       .nav-list {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         gap: 1.5rem;
+        width: 100%;
       }
       
       .mobile-menu-btn {
@@ -597,26 +1391,7 @@
       }
       
       .hero-text {
-        font-size: 1rem;
-      }
-      
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .container {
-        padding: 0 1rem;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .hero-title {
-        font-size: 2rem;
+        font-size: 1.1rem;
       }
       
       .hero-btns {
@@ -624,8 +1399,52 @@
         gap: 1rem;
       }
       
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-stats {
+        gap: 1.5rem;
+      }
+      
+      .stat-number {
+        font-size: 2rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonial {
+        padding: 2rem 1.5rem;
+      }
+      
       .footer-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .section {
+        padding: 4rem 0;
       }
     }
   </style>
@@ -635,7 +1454,8 @@
   <nav class="navbar">
     <div class="container navbar-container">
       <a href="index.html" class="navbar-logo">
-        AMONIE FITNESS ARENA
+        <img src="Amonie Fitness Arena Logo.png" alt="Amonie Fitness Logo">
+        AMONIE <span>FITNESS</span>
       </a>
       
       <button class="mobile-menu-btn" id="mobile-menu-btn">
@@ -644,16 +1464,18 @@
       
       <div class="navbar-menu" id="navbar-menu">
         <ul class="nav-list">
-          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
           <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-          <li class="nav-item"><a href="services.html" class="nav-link">Programs</a></li>
+          <li class="nav-item"><a href="programs.html" class="nav-link">Programs</a></li>
+          
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
-        <a href="join.html" class="btn btn-outline">Join Now</a>
+        <a href="#contact" class="btn btn-primary">Join Now</a>
       </div>
     </div>
   </nav>
+
 
   <!-- PAGE HERO -->
   <section class="page-hero">
@@ -667,112 +1489,358 @@
     </div>
   </section>
 
-  <!-- OUR STORY SECTION -->
-  <section class="section about" id="story">
-    <div class="container about-container">
-      <div class="about-img">
-        <img src="p4.jpg" alt="Amonie Fitness Arena">
-      </div>
-      
-      <div class="about-content">
-        <h2 class="section-title">Our Story</h2>
-        <p class="about-text"> Amonie Fitness Arena began as a small fitness studio with a big vision: to create a community-focused gym that empowers individuals to transform their lives through fitness.</p>
-        <p class="about-text">What started as a modest facility has grown into Idu's premier fitness destination, serving hundreds of members with state-of-the-art equipment, diverse programs, and expert guidance.</p>
-        
-        <div class="about-features">
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-calendar-check"></i>
-            </div>
-            <div>
-              <h4>3+ Years</h4>
-              <p>Dedicated to fitness excellence in Abuja</p>
-            </div>
-          </div>
-          
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div>
-              <h4>500+ Members</h4>
-              <p>In our growing fitness community</p>
-            </div>
-          </div>
-          
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-trophy"></i>
-            </div>
-            <div>
-              <h4>20+ Programs</h4>
-              <p>Tailored to all fitness levels and goals</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <style>
+  /* Base Styles */
+  .section {
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    transition: width 1s ease 0.3s;
+  }
+  
+  .section-title.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .section-title.animate::after {
+    width: 100%;
+  }
+  
+  .about-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out 0.2s;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  
+  .about-text.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* About Section */
+  .about-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  .about-img {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: perspective(1000px) rotateY(-15deg);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+  }
+  
+  .about-img.animate {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0);
+  }
+  
+  .about-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  .about-img:hover img {
+    transform: scale(1.05);
+  }
+  
+  .about-content {
+    flex: 1;
+  }
+  
+  /* Feature Items */
+  .about-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .feature-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+  }
+  
+  .feature-item:nth-child(1) { transition-delay: 0.4s; }
+  .feature-item:nth-child(2) { transition-delay: 0.6s; }
+  .feature-item:nth-child(3) { transition-delay: 0.8s; }
+  
+  .feature-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+  }
+  
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: white;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-item:hover .feature-icon {
+    transform: rotate(15deg) scale(1.1);
+  }
+  
+  .feature-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .feature-item p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  /* Mission Section */
+  .mission {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    position: relative;
+  }
+  
+  .mission::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.3)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  .mission-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+  
+  .mission-img {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+    transform: perspective(1000px) rotateY(15deg);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    order: 2;
+  }
+  
+  .mission-img.animate {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0);
+  }
+  
+  .mission-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  .mission-img:hover img {
+    transform: scale(1.05);
+  }
+  
+  .mission-content {
+    flex: 1;
+    order: 1;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-container, .mission-container {
+      flex-direction: column;
+    }
+    
+    .mission-img {
+      order: 1;
+    }
+    
+    .mission-content {
+      order: 2;
+    }
+    
+    .about-img, .mission-img {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+</style>
 
-  <!-- MISSION SECTION -->
-  <section class="section mission">
-    <div class="container mission-container">
-      <div class="mission-content">
-        <h2 class="section-title">Our Mission & Values</h2>
-        <p class="about-text">At Amonie Fitness Arena, our mission is to inspire and empower individuals to achieve their health and fitness goals through personalized training, community support, and a commitment to excellence.</p>
+<!-- OUR STORY SECTION -->
+<section class="section about" id="story">
+  <div class="container about-container">
+    <div class="about-img">
+      <img src="p4.jpg" alt="Amonie Fitness Arena">
+    </div>
+    
+    <div class="about-content">
+      <h2 class="section-title">Our Story</h2>
+      <p class="about-text">Amonie Fitness Arena began as a small fitness studio with a big vision: to create a community-focused gym that empowers individuals to transform their lives through fitness.</p>
+      <p class="about-text">What started as a modest facility has grown into Idu's premier fitness destination, serving hundreds of members with state-of-the-art equipment, diverse programs, and expert guidance.</p>
+      
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div>
+            <h4>3+ Years</h4>
+            <p>Dedicated to fitness excellence in Abuja</p>
+          </div>
+        </div>
         
-        <div class="about-features">
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-heart"></i>
-            </div>
-            <div>
-              <h4>Passion</h4>
-              <p>We're passionate about fitness and helping others discover their potential</p>
-            </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
           </div>
-          
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-hand-holding-heart"></i>
-            </div>
-            <div>
-              <h4>Community</h4>
-              <p>We believe in building a supportive, inclusive fitness community</p>
-            </div>
+          <div>
+            <h4>500+ Members</h4>
+            <p>In our growing fitness community</p>
           </div>
-          
-          <div class="feature-item">
-            <div class="feature-icon">
-              <i class="fas fa-star"></i>
-            </div>
-            <div>
-              <h4>Excellence</h4>
-              <p>We strive for excellence in everything we do, from facilities to training</p>
-            </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div>
+            <h4>20+ Programs</h4>
+            <p>Tailored to all fitness levels and goals</p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION SECTION -->
+<section class="section mission">
+  <div class="container mission-container">
+    <div class="mission-content">
+      <h2 class="section-title">Our Mission & Values</h2>
+      <p class="about-text">At Amonie Fitness Arena, our mission is to inspire and empower individuals to achieve their health and fitness goals through personalized training, community support, and a commitment to excellence.</p>
       
-      <div class="mission-img">
-        <img src="p5.jpg" alt="Our Mission">
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <div>
+            <h4>Passion</h4>
+            <p>We're passionate about fitness and helping others discover their potential</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <div>
+            <h4>Community</h4>
+            <p>We believe in building a supportive, inclusive fitness community</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div>
+            <h4>Excellence</h4>
+            <p>We strive for excellence in everything we do, from facilities to training</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+    
+    <div class="mission-img">
+      <img src="p5.jpg" alt="Our Mission">
+    </div>
+  </div>
+</section>
+
+<script>
+  // Animation trigger on scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const animateOnScroll = function() {
+      const elements = document.querySelectorAll('.section-title, .about-text, .about-img, .mission-img, .feature-item');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementPosition < windowHeight - 100) {
+          element.classList.add('animate');
+        }
+      });
+    };
+    
+    // Initial check
+    animateOnScroll();
+    
+    // Check on scroll
+    window.addEventListener('scroll', animateOnScroll);
+  });
+</script>
 
  
 
   <!-- FACILITIES SECTION -->
  
 
-  <!-- CTA SECTION -->
-  <section class="cta">
-    <div class="container">
-      <h2 class="cta-title">Ready to Start Your Fitness Journey?</h2>
-      <p class="cta-text">Join Amonie Fitness Arena today and become part of our fitness community. Our team is ready to help you achieve your goals.</p>
-      <a href="join.html" class="btn btn-primary">Join Now</a>
-    </div>
-  </section>
+  
 
   <!-- FOOTER -->
   <footer class="footer">
