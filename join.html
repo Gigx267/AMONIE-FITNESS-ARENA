@@ -5,31 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join Us | Amonie Fitness Arena | Gym in Idu, Abuja</title>
   <link rel="icon" href="Amonie Fitness Arena Logo.png" type="image/x-icon">
-  <link rel="shortcut icon" href="Amonie Fitness Arena Logo.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Reusing all the same styles from the services page */
     :root {
-      --primary: #eb1d16;
+      --primary: #FF3E41;
+      --primary-light: #FF6B6E;
+      --primary-dark: #E62A2D;
       --dark: #1A1A1A;
+      --darker: #121212;
       --light: #F8F8F8;
-      --accent: #00A8E8;
       --white: #FFFFFF;
       --gray: #6C757D;
-      --transition: all 0.3s ease;
+      --gray-light: #e9ecef;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
     }
     
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
     }
     
-    html {
-      scroll-behavior: smooth;
+    html { 
+      scroll-behavior: smooth; 
     }
     
     body {
@@ -37,23 +45,10 @@
       color: var(--dark);
       background-color: var(--white);
       line-height: 1.6;
-    }
-    
-    h1, h2, h3, h4, h5 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-    
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
     }
     
     .container {
@@ -63,90 +58,25 @@
       padding: 0 1.5rem;
     }
     
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      border-radius: 4px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-      transition: var(--transition);
-      cursor: pointer;
-      border: none;
-    }
-    
-    .btn-primary {
-      background-color: var(--primary);
-      color: var(--white);
-    }
-    
-    .btn-primary:hover {
-      background-color: #E05D00;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
-    }
-    
-    .btn-outline {
-      background-color: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-    
-    .btn-outline:hover {
-      background-color: var(--primary);
-      color: var(--white);
-    }
-    
-    .section {
-      padding: 5rem 0;
-    }
-    
-    .section-title {
-      font-size: 2.5rem;
-      color: var(--dark);
-      margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
-    }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background-color: var(--primary);
-    }
-    
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--gray);
-      max-width: 700px;
-      margin-bottom: 2rem;
-    }
-    
-    .text-center {
-      text-align: center;
-    }
-    
-    .mx-auto {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    /* NAVBAR */
+    /* Modern Navbar */
     .navbar {
       position: fixed;
-      top: 0;
+      top: 0; 
       left: 0;
       width: 100%;
-      padding: 1.2rem 0;
+      padding: 1rem 0;
       z-index: 1000;
-      background-color: var(--white);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
       transition: var(--transition);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .navbar.scrolled {
+      padding: 0.7rem 0;
+      box-shadow: var(--shadow-md);
     }
     
     .navbar-container {
@@ -160,10 +90,21 @@
       font-size: 1.8rem;
       font-weight: 700;
       color: var(--primary);
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     
-    .navbar-logo span {
-      color: var(--dark);
+    .navbar-logo::before {
+      content: "";
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-color: var(--primary);
+      -webkit-mask: url('Amonie Fitness Arena Logo.png') no-repeat center;
+      mask: url('Amonie Fitness Arena Logo.png') no-repeat center;
+      mask-size: contain;
     }
     
     .navbar-menu {
@@ -175,11 +116,7 @@
     .nav-list {
       display: flex;
       list-style: none;
-      gap: 1.5rem;
-    }
-    
-    .nav-item {
-      position: relative;
+      gap: 1.8rem;
     }
     
     .nav-link {
@@ -187,10 +124,73 @@
       font-size: 0.95rem;
       transition: var(--transition);
       padding: 0.5rem 0;
+      position: relative;
+      color: var(--dark);
     }
     
-    .nav-link:hover {
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .nav-link:hover { 
+      color: var(--primary); 
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 2rem;
+      border-radius: var(--radius-xl);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
       color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-outline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--gradient);
+      transition: var(--transition);
+      z-index: -1;
+    }
+    
+    .btn-outline:hover::before {
+      width: 100%;
+    }
+    
+    .btn-outline:hover {
+      color: var(--white);
+      border-color: transparent;
+      box-shadow: 0 5px 15px rgba(255, 62, 65, 0.3);
     }
     
     .mobile-menu-btn {
@@ -200,171 +200,300 @@
       font-size: 1.5rem;
       color: var(--dark);
       cursor: pointer;
+      transition: var(--transition);
     }
     
-    /* HERO SECTION */
+    .mobile-menu-btn:hover {
+      color: var(--primary);
+    }
+    
+    /* Modern Hero Section */
     .page-hero {
-      height: 50vh;
-      min-height: 400px;
+      height: 60vh;
+      min-height: 500px;
       display: flex;
       align-items: center;
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./Amonie\ Fitness\ Arena\ Logo.png') no-repeat center center/cover;
+      justify-content: center;
+      background: 
+        linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%),
+        url('./p5.jpg') no-repeat center center/cover;
       color: var(--white);
       text-align: center;
       padding-top: 80px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
     }
     
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(transparent, var(--white));
+      z-index: 1;
+    }
+    
+    .hero-content { 
+      max-width: 800px; 
+      margin: 0 auto; 
+      position: relative;
+      z-index: 2;
+      padding: 0 2rem;
     }
     
     .hero-title {
       font-size: 3.5rem;
       margin-bottom: 1.5rem;
       line-height: 1.2;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      animation: fadeInUp 0.8s ease;
     }
     
-    .hero-title span {
+    .hero-title span { 
       color: var(--primary);
+      position: relative;
+      display: inline-block;
     }
     
-    .hero-text {
-      font-size: 1.2rem;
-      margin-bottom: 2.5rem;
-      opacity: 0.9;
+    .hero-title span::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--primary);
+      opacity: 0.3;
+      z-index: -1;
+      border-radius: 4px;
     }
     
-    /* REGISTRATION FORM */
-    .registration {
-      padding: 5rem 0;
-      background-color: var(--light);
+    .hero-text { 
+      font-size: 1.25rem; 
+      margin-bottom: 2rem; 
+      opacity: 0.92; 
+      animation: fadeInUp 0.8s ease 0.2s forwards;
+      opacity: 0;
     }
     
-    .registration-container {
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--white);
+      font-size: 1.5rem;
+      animation: bounce 2s infinite;
+      z-index: 2;
+      cursor: pointer;
+    }
+    
+    /* Modern Form Section */
+    .main-section {
+      flex: 1 0 auto;
+      background: var(--white);
+      padding: 4rem 0 6rem 0;
+    }
+    
+    .join-form-wrapper {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 3rem;
       max-width: 800px;
       margin: 0 auto;
-      background-color: var(--white);
-      border-radius: 10px;
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
       overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.05);
     }
     
-    .registration-header {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 2rem;
-      text-align: center;
+    .join-form-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--gradient);
     }
     
-    .registration-title {
-      font-size: 1.8rem;
+    .join-form-title {
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
+      color: var(--dark);
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 1rem;
     }
     
-    .registration-subtitle {
-      font-size: 1rem;
-      opacity: 0.9;
+    .join-form-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
     }
     
-    .registration-form {
-      padding: 2rem;
+    .form-description {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 3rem;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
-    .form-group {
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
       margin-bottom: 1.5rem;
     }
     
-    .form-label {
-      display: block;
+    .field {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .field label {
+      font-size: 0.97rem;
+      color: var(--dark);
       margin-bottom: 0.5rem;
       font-weight: 600;
-      color: var(--dark);
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-    
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(235, 29, 22, 0.2);
-    }
-    
-    .form-row {
-      display: flex;
-      gap: 1.5rem;
-    }
-    
-    .form-col {
-      flex: 1;
-    }
-    
-    .form-select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236C757D' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.75rem center;
-      background-size: 16px 12px;
-    }
-    
-    .form-check {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
     }
     
-    .form-check-input {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--primary);
-    }
-    
-    .form-check-label {
+    .field label i {
+      margin-right: 0.5rem;
+      color: var(--primary);
       font-size: 0.9rem;
-      color: var(--gray);
     }
     
-    .form-submit {
+    .field input, 
+    .field select, 
+    .field textarea {
+      padding: 0.9rem 1.2rem;
+      font-size: 0.97rem;
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius-sm);
+      background: var(--light);
+      transition: var(--transition);
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .field input:focus, 
+    .field select:focus, 
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(255, 62, 65, 0.15);
+    }
+    
+    .field textarea { 
+      min-height: 120px; 
+      resize: vertical; 
+    }
+    
+    .field.full-width { 
+      grid-column: 1 / 3; 
+    }
+    
+    .join-submit-btn {
       width: 100%;
-      padding: 1rem;
-      font-size: 1rem;
-      margin-top: 1rem;
+      padding: 1.2rem;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      border: none;
+      margin-top: 1.5rem;
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(255, 62, 65, 0.3);
+    }
+    
+    .join-submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .join-submit-btn:hover::before {
+      left: 100%;
+    }
+    
+    .join-submit-btn:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+      box-shadow: none;
     }
     
     .form-message {
       margin-top: 1.5rem;
-      padding: 1rem;
-      border-radius: 4px;
+      padding: 1.2rem;
+      border-radius: var(--radius-sm);
       text-align: center;
       display: none;
+      font-size: 0.97rem;
+      font-weight: 500;
     }
     
     .form-message.success {
-      background-color: rgba(40, 167, 69, 0.1);
+      background-color: rgba(40, 167, 69, 0.12);
       color: #28a745;
       display: block;
     }
     
     .form-message.error {
-      background-color: rgba(220, 53, 69, 0.1);
+      background-color: rgba(220, 53, 69, 0.12);
       color: #dc3545;
       display: block;
     }
     
-    /* FOOTER */
+    /* Modern Footer */
     .footer {
-      background-color: var(--dark);
+      background-color: var(--darker);
       color: var(--white);
-      padding: 4rem 0 2rem;
+      padding: 4rem 0 2rem 0;
+      margin-top: auto;
+      position: relative;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
     }
     
     .footer-grid {
@@ -375,10 +504,12 @@
     }
     
     .footer-col h3 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 1.5rem;
-      position: relative;
+      font-family: 'Poppins', sans-serif;
       padding-bottom: 10px;
+      position: relative;
+      display: inline-block;
     }
     
     .footer-col h3::after {
@@ -386,13 +517,15 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 40px;
-      height: 2px;
-      background-color: var(--primary);
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
     }
     
     .footer-links {
       list-style: none;
+      padding-left: 0;
     }
     
     .footer-link {
@@ -403,12 +536,20 @@
     .footer-link a {
       opacity: 0.8;
       transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .footer-link a i {
+      color: var(--primary);
+      font-size: 0.9rem;
     }
     
     .footer-link a:hover {
       opacity: 1;
       color: var(--primary);
-      padding-left: 5px;
+      transform: translateX(5px);
     }
     
     .social-links {
@@ -418,127 +559,173 @@
     }
     
     .social-link {
-      width: 40px;
-      height: 40px;
+      width: 42px; 
+      height: 42px;
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.08);
       display: flex;
-      align-items: center;
+      align-items: center; 
       justify-content: center;
       transition: var(--transition);
+      color: var(--white);
+      font-size: 1.1rem;
     }
     
     .social-link:hover {
-      background-color: var(--primary);
-      color: var(--dark);
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 62, 65, 0.3);
     }
     
     .footer-bottom {
       text-align: center;
       padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.9rem;
-      opacity: 0.7;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.92rem;
+      opacity: 0.6;
     }
     
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 1024px) {
-      .section {
-        padding: 4rem 0;
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
     
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .form-grid { gap: 1.2rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .hero-title { font-size: 3rem; }
+    }
+    
     @media (max-width: 768px) {
+      .navbar-container { flex-direction: row; }
       .navbar-menu {
-        position: fixed;
-        top: 80px;
-        left: -100%;
+        position: fixed; 
+        top: 80px; 
+        left: -100%; 
         width: 100%;
         height: calc(100vh - 80px);
-        background-color: var(--white);
+        background: var(--white);
         flex-direction: column;
         align-items: center;
         justify-content: center;
         transition: var(--transition);
         z-index: 999;
+        padding: 2rem;
       }
       
-      .navbar-menu.active {
-        left: 0;
+      .navbar-menu.active { 
+        left: 0; 
       }
       
-      .nav-list {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
+      .nav-list { 
+        flex-direction: column; 
+        gap: 1.5rem; 
+        text-align: center;
+        width: 100%;
       }
       
-      .mobile-menu-btn {
-        display: block;
+      .mobile-menu-btn { 
+        display: block; 
+      }
+      
+      .footer-grid { 
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+      }
+      
+      .main-section { 
+        padding: 3rem 0 4rem 0; 
+      }
+      
+      .join-form-wrapper { 
+        padding: 2rem 1.5rem; 
+      }
+      
+      .form-grid { 
+        grid-template-columns: 1fr; 
+      }
+      
+      .field.full-width { 
+        grid-column: 1 / 2; 
+      }
+      
+      .page-hero {
+        height: 50vh;
+        min-height: 400px;
       }
       
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
       }
       
       .hero-text {
-        font-size: 1rem;
-      }
-      
-      .form-row {
-        flex-direction: column;
-        gap: 0;
-      }
-      
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        font-size: 1.1rem;
       }
     }
     
     @media (max-width: 576px) {
-      .container {
-        padding: 0 1rem;
+      .container { 
+        padding: 0 1rem; 
       }
       
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .hero-title {
-        font-size: 2rem;
-      }
-      
-      .registration-header {
-        padding: 1.5rem;
-      }
-      
-      .registration-title {
+      .navbar-logo {
         font-size: 1.5rem;
       }
       
-      .registration-form {
-        padding: 1.5rem;
+      .hero-title { 
+        font-size: 1.8rem; 
       }
       
-      .footer-grid {
-        grid-template-columns: 1fr;
+      .join-form-title { 
+        font-size: 1.8rem; 
+      }
+      
+      .join-form-wrapper { 
+        padding: 1.5rem 1rem; 
+        border-radius: var(--radius-md);
+      }
+      
+      .join-submit-btn {
+        padding: 1rem;
+        font-size: 1rem;
+      }
+      
+      .page-hero {
+        height: 45vh;
+        min-height: 350px;
       }
     }
   </style>
 </head>
 <body>
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="container navbar-container">
-      <a href="index.html" class="navbar-logo">
-        AMONIE FITNESS ARENA
-      </a>
-      
+      <a href="index.html" class="navbar-logo">AMONIE FITNESS</a>
       <button class="mobile-menu-btn" id="mobile-menu-btn">
         <i class="fas fa-bars"></i>
       </button>
-      
       <div class="navbar-menu" id="navbar-menu">
         <ul class="nav-list">
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -552,122 +739,77 @@
     </div>
   </nav>
 
-  <!-- PAGE HERO -->
+  <!-- HERO SECTION -->
   <section class="page-hero">
     <div class="container hero-content">
-      <h1 class="hero-title">Join <span>Our Gym</span></h1>
-      <p class="hero-text">Become a member today and start your journey to a healthier, stronger you.</p>
+      <h1 class="hero-title">Transform <span>Your Body</span></h1>
+      <p class="hero-text">Join our fitness community today and start your journey to a healthier, stronger you with personalized training programs.</p>
+    </div>
+    <div class="scroll-down" onclick="document.querySelector('.main-section').scrollIntoView({ behavior: 'smooth' })">
+      <i class="fas fa-chevron-down"></i>
     </div>
   </section>
 
-  <!-- REGISTRATION SECTION -->
-  <section class="registration">
-    <div class="container">
-      <div class="registration-container">
-        <div class="registration-header">
-          <h3 class="registration-title">Membership Registration</h3>
-          <p class="registration-subtitle">Fill out the form below to join Amonie Fitness Arena</p>
-        </div>
-        
-        <form id="registration-form" class="registration-form" action="https://formspree.io/f/xpwdnjrn" method="POST">
-          <div class="form-row">
-            <div class="form-col">
-              <div class="form-group">
-                <label for="first-name" class="form-label">First Name</label>
-                <input type="text" id="first-name" name="first-name" class="form-control" required>
-              </div>
-            </div>
-            <div class="form-col">
-              <div class="form-group">
-                <label for="last-name" class="form-label">Last Name</label>
-                <input type="text" id="last-name" name="last-name" class="form-control" required>
-              </div>
-            </div>
+  <!-- MAIN FORM SECTION -->
+  <main class="main-section">
+    <div class="join-form-wrapper">
+      <h2 class="join-form-title">Become a Member</h2>
+      <p class="form-description">Fill out the form below to get started on your fitness journey with our expert trainers and state-of-the-art facilities.</p>
+      <form id="form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="FirstName"><i class="fas fa-user"></i>First Name</label>
+            <input type="text" name="FirstName" id="FirstName" placeholder="Enter your first name" required>
           </div>
-          
-          <div class="form-group">
-            <label for="email" class="form-label">Email Address</label>
-            <input type="email" id="email" name="email" class="form-control" required>
+          <div class="field">
+            <label for="LastName"><i class="fas fa-user"></i>Last Name</label>
+            <input type="text" name="LastName" id="LastName" placeholder="Enter your last name" required>
           </div>
-          
-          <div class="form-group">
-            <label for="phone" class="form-label">Phone Number</label>
-            <input type="tel" id="phone" name="phone" class="form-control" required>
+          <div class="field">
+            <label for="Phone"><i class="fas fa-phone"></i>Phone Number</label>
+            <input type="tel" name="Phone" id="Phone" placeholder="Enter your phone number">
           </div>
-          
-          <div class="form-row">
-            <div class="form-col">
-              <div class="form-group">
-                <label for="gender" class="form-label">Gender</label>
-                <select id="gender" name="gender" class="form-control form-select" required>
-                  <option value="" disabled selected>Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-col">
-              <div class="form-group">
-                <label for="dob" class="form-label">Date of Birth</label>
-                <input type="date" id="dob" name="dob" class="form-control" required>
-              </div>
-            </div>
+          <div class="field">
+            <label for="email"><i class="fas fa-envelope"></i>Email Address</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email" required>
           </div>
-          
-          <div class="form-group">
-            <label for="membership" class="form-label">Membership Plan</label>
-            <select id="membership" name="membership" class="form-control form-select" required>
-              <option value="" disabled selected>Select Membership Plan</option>
-              <option value="basic">Basic (₦15,000/month)</option>
-              <option value="premium">Premium (₦25,000/month)</option>
-              <option value="vip">VIP (₦50,000/month)</option>
+          <div class="field">
+            <label for="Gender"><i class="fas fa-venus-mars"></i>Gender</label>
+            <select name="Gender" id="Gender">
+              <option value="">Select gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+              <option value="Prefer not to say">Prefer not to say</option>
             </select>
           </div>
-          
-          <div class="form-group">
-            <label class="form-label">Fitness Goals (Select all that apply)</label>
-            <div class="form-check">
-              <input type="checkbox" id="weight-loss" name="fitness-goals" value="weight-loss" class="form-check-input">
-              <label for="weight-loss" class="form-check-label">Weight Loss</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" id="muscle-gain" name="fitness-goals" value="muscle-gain" class="form-check-input">
-              <label for="muscle-gain" class="form-check-label">Muscle Gain</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" id="general-fitness" name="fitness-goals" value="general-fitness" class="form-check-input">
-              <label for="general-fitness" class="form-check-label">General Fitness</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" id="sports-training" name="fitness-goals" value="sports-training" class="form-check-input">
-              <label for="sports-training" class="form-check-label">Sports Training</label>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" id="rehabilitation" name="fitness-goals" value="rehabilitation" class="form-check-input">
-              <label for="rehabilitation" class="form-check-label">Rehabilitation</label>
-            </div>
+          <div class="field">
+            <label for="DateofBirth"><i class="fas fa-calendar-day"></i>Date of Birth</label>
+            <input type="date" name="DateofBirth" id="DateofBirth">
           </div>
-          
-          <div class="form-group">
-            <label for="message" class="form-label">Additional Information</label>
-            <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+          <div class="field">
+            <label for="MembershipPlan"><i class="fas fa-tag"></i>Membership Plan</label>
+            <select name="MembershipPlan" id="MembershipPlan">
+              <option value="">Select a plan</option>
+              <option value="Basic">Basic
+₦15,000 /month </option>
+         
+              <option value="Premium">Premium
+₦25,000 /month </option>
+              <option value="VIP">VIP
+₦50,000 /month </option>
+            </select>
           </div>
-          
-          <div class="form-group">
-            <div class="form-check">
-              <input type="checkbox" id="terms" name="terms" class="form-check-input" required>
-              <label for="terms" class="form-check-label">I agree to the <a href="#" style="color: var(--primary);">terms and conditions</a></label>
-            </div>
+          <div class="field full-width">
+            <label for="FitnessGoals"><i class="fas fa-bullseye"></i>Fitness Goals</label>
+            <textarea name="FitnessGoals" id="FitnessGoals" placeholder="Describe your fitness goals (weight loss, muscle gain, endurance, etc.)"></textarea>
           </div>
-          
-          <button type="submit" class="btn btn-primary form-submit">Submit Application</button>
-          
-          <div id="form-status" class="form-message"></div>
-        </form>
-      </div>
+        </div>
+        <input type="submit" id="button" class="join-submit-btn" value="Start My Journey">
+        <div class="form-message" id="form-message"></div>
+      </form>
     </div>
-  </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -675,130 +817,106 @@
       <div class="footer-grid">
         <div class="footer-col">
           <h3>Amonie Fitness</h3>
-          <p>Idu's premier fitness destination, helping you break through limits and achieve greatness since 2020.</p>
+          <p>Idu's premier fitness destination, helping you break through limits and achieve greatness since 2020 with cutting-edge equipment and expert trainers.</p>
           <div class="social-links">
             <a href="https://www.instagram.com/amoniefitnessarena/" class="social-link"><i class="fab fa-instagram"></i></a>
             <a href="https://www.instagram.com/amoniefitnessarena/" class="social-link"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/amoniefitnessarena/" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/amoniefitnessarena/" class="social-link"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
-        
         <div class="footer-col">
           <h3>Quick Links</h3>
           <ul class="footer-links">
-            <li class="footer-link"><a href="index.html">Home</a></li>
-            <li class="footer-link"><a href="about.html">About Us</a></li>
-            <li class="footer-link"><a href="services.html">Services</a></li>
-            <li class="footer-link"><a href="contact.html">Contact</a></li>
+            <li class="footer-link"><a href="index.html"><i class="fas fa-chevron-right"></i>Home</a></li>
+            <li class="footer-link"><a href="about.html"><i class="fas fa-chevron-right"></i>About Us</a></li>
+            <li class="footer-link"><a href="services.html"><i class="fas fa-chevron-right"></i>Services</a></li>
+            <li class="footer-link"><a href="programs.html"><i class="fas fa-chevron-right"></i>Programs</a></li>
+            <li class="footer-link"><a href="contact.html"><i class="fas fa-chevron-right"></i>Contact</a></li>
           </ul>
         </div>
-        
         <div class="footer-col">
           <h3>Opening Hours</h3>
           <ul class="footer-links">
-            <li class="footer-link">Mon-Fri: 6PM - 9PM</li>
-            <li class="footer-link">Sat: 7AM - 11AM</li>
-            <li class="footer-link">Sun: Closed</li>
+            <li class="footer-link"><i class="fas fa-clock"></i> Mon-Fri: 6AM - 10PM</li>
+            <li class="footer-link"><i class="fas fa-clock"></i> Sat: 7AM - 8PM</li>
+            <li class="footer-link"><i class="fas fa-clock"></i> Sun: 8AM - 6PM</li>
+            <li class="footer-link"><i class="fas fa-phone"></i> +234 812 345 6789</li>
+            <li class="footer-link"><i class="fas fa-envelope"></i> info@amoniefitness.com</li>
           </ul>
         </div>
       </div>
-      
       <div class="footer-bottom">
-        <p>&copy; 2023 Amonie Fitness Arena. All rights reserved.</p>
+        <p>&copy; 2023 Amonie Fitness Arena. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--primary);"></i> for fitness enthusiasts</p>
       </div>
     </div>
   </footer>
 
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    // Mobile Menu Toggle
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Navbar mobile menu
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navbarMenu = document.getElementById('navbar-menu');
-    
     mobileMenuBtn.addEventListener('click', () => {
       navbarMenu.classList.toggle('active');
-      mobileMenuBtn.innerHTML = navbarMenu.classList.contains('active') ? 
+      mobileMenuBtn.innerHTML = navbarMenu.classList.contains('active') ?
         '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
     });
     
-    // Close mobile menu when clicking on a link
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
+    document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navbarMenu.classList.remove('active');
         mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });
+
+    // EmailJS integration
+    emailjs.init('SzD8OSJJXnLevYjxG');
+    const btn = document.getElementById('button');
+    const form = document.getElementById('form');
+    const formMessage = document.getElementById('form-message');
     
-    // Form submission handler
-    const form = document.getElementById('registration-form');
-    const formStatus = document.getElementById('form-status');
-    
-    async function handleSubmit(event) {
+    form.addEventListener('submit', function(event) {
       event.preventDefault();
+      btn.value = 'Sending...';
+      btn.disabled = true;
+      formMessage.style.display = 'none';
       
-      // Disable submit button
-      const submitButton = form.querySelector('button[type="submit"]');
-      submitButton.disabled = true;
-      submitButton.innerHTML = 'Processing...';
+      const serviceID = 'default_service';
+      const templateID = 'template_f52cplh';
       
-      // Prepare form data
-      const formData = new FormData(event.target);
-      
-      try {
-        const response = await fetch(event.target.action, {
-          method: form.method,
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          // Success
-          formStatus.innerHTML = "Thank you for your registration! We'll contact you shortly to complete your membership.";
-          formStatus.classList.add('success');
-          formStatus.classList.remove('error');
+      emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+          btn.value = 'Application Sent!';
+          formMessage.textContent = 'Thank you! Your application has been submitted successfully. We will contact you shortly.';
+          formMessage.className = 'form-message success';
+          formMessage.style.display = 'block';
           form.reset();
-        } else {
-          // Error
-          const data = await response.json();
-          if (data.errors) {
-            formStatus.innerHTML = data.errors.map(error => error.message).join(', ');
-          } else {
-            formStatus.innerHTML = "Oops! There was a problem submitting your form. Please try again later.";
-          }
-          formStatus.classList.add('error');
-          formStatus.classList.remove('success');
-        }
-      } catch (error) {
-        // Network error
-        formStatus.innerHTML = "Oops! There was a problem submitting your form. Please check your connection and try again.";
-        formStatus.classList.add('error');
-        formStatus.classList.remove('success');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.innerHTML = 'Submit Application';
-      }
-    }
-    
-    form.addEventListener('submit', handleSubmit);
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
+          
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            btn.value = 'Start My Journey';
+            btn.disabled = false;
+          }, 3000);
+        }, (err) => {
+          btn.value = 'Start My Journey';
+          btn.disabled = false;
+          formMessage.textContent = 'Oops! Something went wrong. Please try again or contact us directly.';
+          formMessage.className = 'form-message error';
+          formMessage.style.display = 'block';
+          console.error(err);
+        });
     });
   </script>
 </body>
